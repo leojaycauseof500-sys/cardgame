@@ -38,6 +38,15 @@ dependencies {
   api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
   api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
+  implementation("com.google.inject:guice:$guiceVersion")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$ktSerialVersion")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$ktSerialVersion")
+  // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+  implementation("ch.qos.logback:logback-classic:$logbackVersion")
+  // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+  implementation("org.slf4j:slf4j-api:$slf4jVersion")
+
+
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }
