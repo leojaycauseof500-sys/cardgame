@@ -1,18 +1,22 @@
-package com.liuliangjie.cardgame.screens
+package com.liuliangjie.cardgame.ui.screen
 
+import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
+import com.google.inject.Singleton
 import com.liuliangjie.cardgame.battle.BattleEntity
 import com.liuliangjie.cardgame.battle.Hand
 
-class BattleScreen(private val game: com.badlogic.gdx.Game) : Screen {
+@Singleton
+class BattleScreen(private val game: Game) : Screen {
     private lateinit var stage: Stage
     private val player = BattleEntity("Player", 20)
     private val enemy = BattleEntity("Enemy", 15)
@@ -48,7 +52,7 @@ class BattleScreen(private val game: com.badlogic.gdx.Game) : Screen {
         for ((index, card) in hand.cards.withIndex()) {
             val btn = TextButton("${card.name} (${if (card.damage >= 0) "+${card.damage}" else card.damage})", skin)
             btn.addListener(object : ChangeListener() {
-                override fun changed(event: com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent?, actor: com.badlogic.gdx.scenes.scene2d.Actor?) {
+                override fun changed(event: ChangeEvent?, actor: Actor?) {
                     playCard(index, btn)
                 }
             })

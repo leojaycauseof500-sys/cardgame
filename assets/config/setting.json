@@ -1,6 +1,8 @@
 {
-  "ui" : {
-   "uiSkinUrl" : "/ui/skin/sgx/uiskin.json"
-  }
-
+  "configs" : [
+    {
+      "type" : "UIConfiguration",
+      "uiSkinUrl": "assets/ui/uiskin.json"
+    }
+  ]
 }

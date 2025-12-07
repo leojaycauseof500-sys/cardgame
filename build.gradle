@@ -8,7 +8,8 @@ buildscript {
   }
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-
+    // 添加KSP插件依赖
+    classpath "org.jetbrains.kotlin.plugin.serialization:org.jetbrains.kotlin.plugin.serialization.gradle.plugin:$ktSerialVersion"
   }
 }
 
