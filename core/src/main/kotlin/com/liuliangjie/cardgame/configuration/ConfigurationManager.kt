@@ -2,7 +2,7 @@ package com.liuliangjie.cardgame.configuration
 
 import com.badlogic.gdx.Gdx
 import com.google.inject.Singleton
-import com.liuliangjie.cardgame.configuration.configuration.GameConfiguration
+import com.liuliangjie.cardgame.configuration.configuration.BaseConfiguration
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 @Singleton
 class ConfigurationManager {
     private val logger = LoggerFactory.getLogger(ConfigurationManager::class.java)
-    private lateinit var configurations : Map<String, GameConfiguration>
+    private lateinit var configurations : Map<String, BaseConfiguration>
     private val json = Json { 
         ignoreUnknownKeys = true
     }
@@ -42,6 +42,6 @@ class ConfigurationManager {
 
     @Serializable
     private data class ConfigWrapper(
-        val configs: List<GameConfiguration>
+        val configs: List<BaseConfiguration>
     )
 }

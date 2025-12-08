@@ -3,34 +3,33 @@ package com.liuliangjie.cardgame.ui.screen
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Game
 import com.badlogic.gdx.Screen
-import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.NinePatch
-import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.ui.Button
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.google.inject.Inject
 import com.google.inject.Singleton
+import com.google.inject.name.Named
 import com.liuliangjie.cardgame.configuration.ConfigurationManager
 import com.liuliangjie.cardgame.configuration.configuration.UIConfiguration
 import com.liuliangjie.cardgame.enums.ConfigurationEnum
 import com.liuliangjie.cardgame.enums.UIAssetEnum
+import com.liuliangjie.cardgame.i18n.I18NService
 import com.liuliangjie.cardgame.ui.KAssetManage
-import java.security.Principal
 
 @Singleton
 public class MainMenuScreens @Inject constructor(
     private val skin : Skin,
     private val configurationManager: ConfigurationManager,
-    private val assetManager: KAssetManage
+    private val assetManager: KAssetManage,
+    @param:Named("UI") private val i18NService: I18NService
 ) : Screen {
     private lateinit var stage : Stage
     private var playBtnTexture: Texture? = null
@@ -50,17 +49,26 @@ public class MainMenuScreens @Inject constructor(
         // 创建一个表格来布局按钮，表格会填满整个屏幕
         val table = Table()
         table.setFillParent(true)
+
         stage.addActor(table)
+        val font = assetManager.getAsset<BitmapFont>(UIAssetEnum.SourceHanMedium.assetName)
 
 
-        // 创建三个按钮
-        // 这里我们用附加图片作为 Play 按钮的背景（运行时创建样式）
-        val optionsButton = TextButton("Options", skin)
-        val exitButton = TextButton("Exit", skin)
 
         val defaultNp = assetManager.getAsset<NinePatch>(UIAssetEnum.DefaultButtonNinePatch.assetName)
-        val startGame = TextButton("Start", TextButton.TextButtonStyle(NinePatchDrawable(defaultNp), null, null))
+        val startGame = TextButton(
+            i18NService.get("mainMenu.startButton.text"),
+            TextButton.TextButtonStyle(NinePatchDrawable(defaultNp), null, null, font)
+        )
 
+        val optionsButton = TextButton(
+            i18NService.get("mainMenu.optionsButton.text"),
+            TextButton.TextButtonStyle(NinePatchDrawable(defaultNp), null, null, font)
+        )
+        val exitButton = TextButton(
+            i18NService.get("mainMenu.exitButton.text"),
+            TextButton.TextButtonStyle(NinePatchDrawable(defaultNp), null, null, font)
+        )
         // Exit 关闭应用（在桌面端有效）
         exitButton.addListener(object : ChangeListener() {
             override fun changed(event: ChangeEvent?, actor: Actor?) {
@@ -68,7 +76,6 @@ public class MainMenuScreens @Inject constructor(
             }
         })
 
-        // 将按钮添加到表格中，每个按钮占一行
         table.add(startGame).width(200f).height(60f).padBottom(20f)
         table.row()
         table.add(optionsButton).width(200f).height(60f).padBottom(20f)

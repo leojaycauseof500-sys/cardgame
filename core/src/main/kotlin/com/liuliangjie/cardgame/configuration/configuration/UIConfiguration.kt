@@ -9,4 +9,4 @@ import kotlinx.serialization.Serializable
 data class UIConfiguration(
     override val name: String = ConfigurationEnum.UI.name,
     val uiSkinUrl : String
-) : GameConfiguration()
+) : BaseConfiguration()

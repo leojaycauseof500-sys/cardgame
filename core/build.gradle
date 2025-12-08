@@ -12,6 +12,7 @@ dependencies {
     api "ch.qos.logback:logback-classic:$logbackVersion"
     api "org.slf4j:slf4j-api:$slf4jVersion"
     api "org.jetbrains.kotlinx:kotlinx-serialization-json:$ktSerialVersion"
+    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
     testImplementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"

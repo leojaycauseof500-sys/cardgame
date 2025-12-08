@@ -3,6 +3,10 @@
     {
       "type" : "UIConfiguration",
       "uiSkinUrl": "assets/ui/uiskin.json"
+    },
+    {
+      "type" : "LanguageConfiguration",
+      "language" : "CHINESE"
     }
   ]
 }

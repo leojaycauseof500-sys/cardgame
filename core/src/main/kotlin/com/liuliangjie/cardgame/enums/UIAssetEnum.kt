@@ -8,5 +8,6 @@ enum class UIAssetEnum(
     val url: String ,
     val desc : String
 ) {
-    DefaultButtonNinePatch("DefaultButton","assets/ui/button/tile_0030.png","默认的可伸缩按钮的九宫格图片")
+    DefaultButtonNinePatch("DefaultButton","assets/ui/button/tile_0030.png","默认的可伸缩按钮的九宫格图片"),
+    SourceHanMedium("SourceHanMedium","assets/fonts/zhs/SourceHanSerifSC-Medium.otf","思源黑体"),
 }
