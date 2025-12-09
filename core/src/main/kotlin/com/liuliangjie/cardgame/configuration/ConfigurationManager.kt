@@ -1,22 +1,19 @@
 package com.liuliangjie.cardgame.configuration
 
-import com.badlogic.gdx.Gdx
+import com.google.inject.Inject
 import com.google.inject.Singleton
 import com.liuliangjie.cardgame.configuration.configuration.BaseConfiguration
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+import com.liuliangjie.cardgame.configuration.loader.ConfigurationLoader
 import org.slf4j.LoggerFactory
+import kotlin.reflect.KClass
 
 @Singleton
-class ConfigurationManager {
+class ConfigurationManager @Inject constructor(
+    private val loaders : Set<ConfigurationLoader>
+) {
     private val logger = LoggerFactory.getLogger(ConfigurationManager::class.java)
-    private lateinit var configurations : Map<String, BaseConfiguration>
-    private val json = Json { 
-        ignoreUnknownKeys = true
-    }
+    private lateinit var configurations: Map<KClass<out BaseConfiguration>, BaseConfiguration>
 
-    // JSON配置文件所在目录
-    private val configDir = "assets/config/"
 
     init {
         // 加载所有配置
@@ -24,24 +21,11 @@ class ConfigurationManager {
     }
 
     fun reloadAll() {
-        val fileName = "${configDir}setting.json"
-
-        try {
-            val configsJson = Gdx.files.internal(fileName).readString()
-
-            val wrapper = json.decodeFromString<ConfigWrapper>(configsJson)
-
-            configurations = wrapper.configs.associateBy { it.name }
-        } catch (e: Exception) {
-            logger.error("加载配置文件失败: $fileName", e)
-            configurations = emptyMap()
-        }
+        configurations = loaders.asSequence().flatMap { loader ->
+            loader.load()
+        }.associateBy { it::class }
     }
 
-    fun getConfiguration(name : String) = configurations[name]
+    fun getConfiguration(clazz : KClass<out BaseConfiguration>) = configurations[clazz]
 
-    @Serializable
-    private data class ConfigWrapper(
-        val configs: List<BaseConfiguration>
-    )
 }

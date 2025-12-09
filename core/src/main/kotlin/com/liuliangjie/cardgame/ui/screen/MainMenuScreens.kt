@@ -22,11 +22,10 @@ import com.liuliangjie.cardgame.configuration.configuration.UIConfiguration
 import com.liuliangjie.cardgame.enums.ConfigurationEnum
 import com.liuliangjie.cardgame.enums.UIAssetEnum
 import com.liuliangjie.cardgame.i18n.I18NService
-import com.liuliangjie.cardgame.ui.KAssetManage
+import com.liuliangjie.cardgame.util.asset.KAssetManage
 
 @Singleton
 public class MainMenuScreens @Inject constructor(
-    private val skin : Skin,
     private val configurationManager: ConfigurationManager,
     private val assetManager: KAssetManage,
     @param:Named("UI") private val i18NService: I18NService
@@ -34,7 +33,7 @@ public class MainMenuScreens @Inject constructor(
     private lateinit var stage : Stage
     private var playBtnTexture: Texture? = null
     private lateinit var game: Game
-    private val uiConfiguration = configurationManager.getConfiguration(ConfigurationEnum.UI.name) as UIConfiguration
+    private val uiConfiguration = configurationManager.getConfiguration(UIConfiguration::class) as UIConfiguration
 
     fun setGame(game: Game) {
         this.game = game
@@ -51,11 +50,11 @@ public class MainMenuScreens @Inject constructor(
         table.setFillParent(true)
 
         stage.addActor(table)
-        val font = assetManager.getAsset<BitmapFont>(UIAssetEnum.SourceHanMedium.assetName)
+        val font = assetManager.getAsset<BitmapFont>("textFont")
 
 
 
-        val defaultNp = assetManager.getAsset<NinePatch>(UIAssetEnum.DefaultButtonNinePatch.assetName)
+        val defaultNp = assetManager.getAsset<NinePatch>("DefaultButton")
         val startGame = TextButton(
             i18NService.get("mainMenu.startButton.text"),
             TextButton.TextButtonStyle(NinePatchDrawable(defaultNp), null, null, font)

@@ -5,5 +5,6 @@ enum class ConfigurationEnum(
 ) {
     UI("ui"),
     LANGUAGE("language"),
-    GAME("game")
+    GAME("game"),
+    ASSET("asset")
 }

@@ -15,20 +15,7 @@ import com.liuliangjie.cardgame.enums.UIAssetEnum
 class SceneModule : AbstractModule() {
 
     override fun configure() {
-        install(I18NModule())
+        install(UtilModule())
 
-    }
-
-    @Provides
-    @Singleton
-    fun provideSkin(configurationManager: ConfigurationManager): Skin {
-        val uiConfiguration = configurationManager.getConfiguration(ConfigurationEnum.UI.name) as UIConfiguration?
-        return Skin(Gdx.files.internal(uiConfiguration?.uiSkinUrl))
-    }
-
-    @Provides
-    @Singleton
-    fun provideFont(): FreeTypeFontGenerator {
-        return FreeTypeFontGenerator(Gdx.files.internal(UIAssetEnum.SourceHanMedium.url))
     }
 }
