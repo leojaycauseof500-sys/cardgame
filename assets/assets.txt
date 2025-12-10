@@ -8,6 +8,7 @@ fonts/zhs/SourceHanSerifSC-Bold.otf
 fonts/zhs/SourceHanSerifSC-Medium.otf
 i18n/ui_en.properties
 i18n/ui_zh_CN.properties
+logs/app.log
 ui/button/tile_0030.png
 ui/font-list.fnt
 ui/font-subtitle.fnt

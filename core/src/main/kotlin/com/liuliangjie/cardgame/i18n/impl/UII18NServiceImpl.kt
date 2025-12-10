@@ -16,6 +16,6 @@ class UII18NServiceImpl @Inject constructor(
     override fun get(key: String): String = bundle[key]
 
     private fun loadBundle() {
-        bundle = I18NBundle.createBundle(Gdx.files.internal("assets/i18n/ui"), locale)
+        bundle = I18NBundle.createBundle(Gdx.files.internal("i18n/ui"), locale)
     }
 }

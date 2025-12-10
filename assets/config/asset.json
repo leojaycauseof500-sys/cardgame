@@ -7,7 +7,7 @@
         {
           "name": "DefaultButton",
           "type": "NINE_PATCH",
-          "path": "assets/ui/button/tile_0030.png",
+          "path": "ui/button/tile_0030.png",
           "properties": {
             "left": "10",
             "right": "10",
@@ -18,7 +18,7 @@
         {
           "name": "textFont",
           "type": "FONT",
-          "path": "assets/fonts/zhs/SourceHanSerifSC-Medium.otf",
+          "path": "fonts/zhs/SourceHanSerifSC-Medium.otf",
           "properties": {
             "size": "20",
             "language" : "CHINESE"
@@ -27,7 +27,7 @@
         {
           "name": "textFont",
           "type": "FONT",
-          "path": "assets/fonts/zhs/SourceHanSerifSC-Medium.otf",
+          "path": "fonts/zhs/SourceHanSerifSC-Medium.otf",
           "properties": {
             "size": "20",
             "language" : "ENGLISH"

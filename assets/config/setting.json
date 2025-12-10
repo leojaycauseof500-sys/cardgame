@@ -2,7 +2,7 @@
   "configs" : [
     {
       "type" : "UIConfiguration",
-      "uiSkinUrl": "assets/ui/uiskin.json"
+      "uiSkinUrl": "ui/uiskin.json"
     },
     {
       "type" : "LanguageConfiguration",

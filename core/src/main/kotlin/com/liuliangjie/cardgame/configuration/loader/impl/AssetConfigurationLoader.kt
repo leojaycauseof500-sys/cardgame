@@ -6,5 +6,5 @@ package com.liuliangjie.cardgame.configuration.loader.impl
  * @see com.liuliangjie.cardgame.util.asset.AssetDefinition
  */
 class AssetConfigurationLoader : AbstractLoader () {
-    override val fileName: String = "assets/config/asset.json"
+    override val fileName: String = "config/asset.json"
 }

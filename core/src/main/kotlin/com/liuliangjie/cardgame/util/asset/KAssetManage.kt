@@ -83,7 +83,7 @@ class KAssetManage @Inject constructor(
 
                                 // 如果指定了字符集，则使用指定的字符集
                                 characters = definition.properties["characters"]
-                                    ?: Gdx.files.internal("assets/characterset/${language.languageCode}.txt").readString()
+                                    ?: Gdx.files.internal("characterset/${language.languageCode}.txt").readString()
 
                             }
                             // todo 。。。
