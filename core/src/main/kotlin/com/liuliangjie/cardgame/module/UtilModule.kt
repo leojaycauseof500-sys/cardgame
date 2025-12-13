@@ -1,9 +1,7 @@
 package com.liuliangjie.cardgame.module
 
-import com.badlogic.gdx.assets.AssetManager
 import com.google.inject.AbstractModule
 import com.google.inject.multibindings.Multibinder
-import com.google.inject.multibindings.MultibinderBinding
 import com.google.inject.name.Names
 import com.liuliangjie.cardgame.configuration.ConfigurationManager
 import com.liuliangjie.cardgame.configuration.loader.ConfigurationLoader

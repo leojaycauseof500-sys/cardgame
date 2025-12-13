@@ -9,6 +9,9 @@ fonts/zhs/SourceHanSerifSC-Medium.otf
 i18n/ui_en.properties
 i18n/ui_zh_CN.properties
 logs/app.log
+ui/button/exitButton.png
+ui/button/exitButton_over.png
+ui/button/tile_0014.png
 ui/button/tile_0030.png
 ui/font-list.fnt
 ui/font-subtitle.fnt

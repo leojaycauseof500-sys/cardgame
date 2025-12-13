@@ -12,7 +12,7 @@ class ConfigurationManager @Inject constructor(
     private val loaders : Set<ConfigurationLoader>
 ) {
     private val logger = LoggerFactory.getLogger(ConfigurationManager::class.java)
-    private lateinit var configurations: Map<KClass<out BaseConfiguration>, BaseConfiguration>
+    private lateinit var configurations: MutableMap<KClass<out BaseConfiguration>, BaseConfiguration>
 
 
     init {
@@ -23,9 +23,14 @@ class ConfigurationManager @Inject constructor(
     fun reloadAll() {
         configurations = loaders.asSequence().flatMap { loader ->
             loader.load()
-        }.associateBy { it::class }
+        }.associateBy { it::class }.toMutableMap()
     }
 
     fun getConfiguration(clazz : KClass<out BaseConfiguration>) = configurations[clazz]
+    
+    fun setConfiguration(configuration: BaseConfiguration){
+        configurations[configuration::class] = configuration
+    }
+
 
 }

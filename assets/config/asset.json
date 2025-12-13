@@ -5,9 +5,30 @@
       "name": "asset",
       "assetDefinitions": [
         {
-          "name": "DefaultButton",
+          "name" : "ExitButton_up",
+          "type" : "TEXTURE",
+          "path": "ui/button/exitButton.png"
+        },
+        {
+          "name" : "ExitButton_over",
+          "type" : "TEXTURE",
+          "path": "ui/button/exitButton_over.png"
+        },
+        {
+          "name": "DefaultButton_over",
           "type": "NINE_PATCH",
           "path": "ui/button/tile_0030.png",
+          "properties": {
+            "left": "10",
+            "right": "10",
+            "top": "10",
+            "bottom": "10"
+          }
+        },
+        {
+          "name": "DefaultButton_up",
+          "type": "NINE_PATCH",
+          "path": "ui/button/tile_0014.png",
           "properties": {
             "left": "10",
             "right": "10",
